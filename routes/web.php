@@ -20,3 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('create-users')->group(function () {
+    Route::get(
+        '/users/create',
+        [\App\Http\Controllers\UserController::class, 'create']
+    );
+
+    Route::post(
+        '/users',
+        [\App\Http\Controllers\UserController::class, 'store']
+    );
+});
