@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('URL testing') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    @can('create-users')
+                    <p>
+                        <a href="{{ route('create-user') }}">Create User route</a>
+                    </p>
+                    @endcan
+                    @can('create-blog-posts')
+                    <p>
+                        <a href="{{ route('create-post') }}">Create Post route</a>
+                    </p>
+                    @endcan
                 </div>
             </div>
         </div>
